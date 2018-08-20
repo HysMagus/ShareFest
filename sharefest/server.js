@@ -61,6 +61,6 @@ if (app.get('env') === 'production') {
 
     ws.instance.start(tracker.instance, server, null, config.clientTimeout);
 //    signaling.start(server);
-});
+};
 
 router.configure(app, __dirname);
