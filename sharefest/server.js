@@ -39,7 +39,7 @@ if (app.get('env') === 'development') {
     ws.instance.start(tracker.instance, server, null, config.clientTimeout);
 //    signaling.start(server);
     console.log('here I am');
-});
+};
 
 if (app.get('env') === 'production') {
     var options = {
