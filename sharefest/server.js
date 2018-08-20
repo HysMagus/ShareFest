@@ -24,15 +24,15 @@ if (process.env.REQUIRE_HTTPS) {
     });
 }
 
-app.use(express.json());
-app.use(express.compress());
+//app.use(express.json());
+//app.use(express.compress());
 app.use(allowCrossDomain);
 app.use(express.static(__dirname + '/public'));
 
 var server;
 var wsPort;
 
-app.configure('development', function () {
+if (app.get('env') === 'development') {
     app.use(express.errorHandler({ dumpExceptions:true, showStack:true }));
     console.log('listening to port 13337');
     server = app.listen(13337);
@@ -41,7 +41,7 @@ app.configure('development', function () {
     console.log('here I am');
 });
 
-app.configure('production', function () {
+if (app.get('env') === 'production') {
     var options = {
         // Important: the following crt and key files are insecure
         // replace the following files with your own keys
