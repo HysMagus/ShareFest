@@ -72,7 +72,7 @@ exports.configure = function (app, rootdir) {
         }
 
         res.setHeader('Content-Type', 'text/javascript');
-        res.status(200).send(js.content);
+        res.send(200, js.content);
     });
 
 //TODO: add to ws
@@ -81,28 +81,28 @@ exports.configure = function (app, rootdir) {
         var fileInfo = req.body;
         peer5.info(fileInfo);
         var swarmId = tracker.instance.createSwarm(fileInfo);
-        res.status(200).send(swarmId);
+        res.send(200, swarmId);
     });
 
     app.get('/B', function (req, res) {
-        res.sendFile(rootdir + '/public/new.html');
+        res.sendfile(rootdir + '/public/new.html');
     });
 
     app.get('/browser', function (req, res) {
-        res.sendFile(rootdir + '/public/browser.html');
+        res.sendfile(rootdir + '/public/browser.html');
     });
 
     app.get('/faq', function (req, res) {
-        res.sendFile(rootdir + '/public/faq.html');
+        res.sendfile(rootdir + '/public/faq.html');
     });
 
 
     app.get('/press', function (req, res) {
-        res.sendFile(rootdir + '/public/press.html');
+        res.sendfile(rootdir + '/public/press.html');
     });
 
     app.get('/download', function (req, res) {
-        res.sendFile(rootdir + '/public/download.html');
+        res.sendfile(rootdir + '/public/download.html');
     });
 
     app.get('/demo', function (req, res) {
@@ -123,7 +123,7 @@ exports.configure = function (app, rootdir) {
 
     app.get('/:id', function (req, res) {
         //todo: bind the room info to the page and output
-        res.sendFile(rootdir + '/public/index.html');
+        res.sendfile(rootdir + '/public/index.html');
     });
 }
 ;
